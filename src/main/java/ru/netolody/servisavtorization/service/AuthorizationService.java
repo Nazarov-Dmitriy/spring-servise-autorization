@@ -1,5 +1,6 @@
 package ru.netolody.servisavtorization.service;
 
+import org.springframework.stereotype.Service;
 import ru.netolody.servisavtorization.advice.InvalidCredentials;
 import ru.netolody.servisavtorization.advice.UnauthorizedUser;
 import ru.netolody.servisavtorization.repository.Authorities;
@@ -7,8 +8,12 @@ import ru.netolody.servisavtorization.repository.UserRepository;
 
 import java.util.List;
 
+@Service
 public class AuthorizationService {
-    UserRepository userRepository = new UserRepository();
+    private  final UserRepository userRepository;
+    public AuthorizationService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public List<Authorities> getAuthorities(String user, String password) {
         if (isEmpty(user) || isEmpty(password)) {

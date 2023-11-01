@@ -10,7 +10,7 @@ public class UserRepository {
     String bdUser = "admin";
     String bdPassword = "admin";
 
-    List<Authorities> userRights = new ArrayList<>();
+    private final List<Authorities> userRights = new ArrayList<>();
 
     public List<Authorities> getUserAuthorities(String user, String password) {
         if (user.equals(bdUser) && password.equals(bdPassword)) {
